@@ -7,3 +7,14 @@ input:invalid {
     border-color: #900;
     background-color: #fdd;
   }
+
+  #root{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resumeWindow{
+    border:2px solid black;
+    padding:15px;
+    border-radius: 25px;
+  }
