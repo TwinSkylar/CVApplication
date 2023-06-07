@@ -1,0 +1,23 @@
+.generalForm,
+.experienceForm,
+.educationForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formSection{
+    border: 2px solid black;
+    padding:15px;
+    border-radius: 25px;
+}
+
+.addingTasks {
+  display: grid;
+  grid-template-columns: auto 20%;
+}
+
+.resume{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
