@@ -5,9 +5,9 @@ const GeneralWindow = ({ generalInfo })=>{
 
     return (
       <>
-        <h1>{CVFirstName}</h1>
-        <h2>Email</h2>
-        <h3>Phone Number</h3>
+        <h1>{[CVFirstName,CVLastName].join(' ')}</h1>
+        <h2>{CVEmail}</h2>
+        <h3>{CVPhone}</h3>
       </>
     );
   

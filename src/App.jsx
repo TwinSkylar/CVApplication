@@ -4,6 +4,7 @@ import GeneralForm from "./components/GeneralForm";
 import EducationForm from "./components/EducationForm";
 import ExperienceForm from "./components/ExperienceForm";
 import GeneralWindow from "./components/GeneralWindow";
+import uniqid from "uniqid";
 
 export default class App extends Component {
   constructor(props) {
@@ -11,25 +12,33 @@ export default class App extends Component {
 
     this.state = {
       generalInfo: {
-        CVFirstName: "argument sake",
-        CVLastName: "",
-        CVEmail: "",
-        CVPhone: "",
+        CVFirstName: "First Name",
+        CVLastName: "Last Name",
+        CVEmail: "email@address.com",
+        CVPhone: "123-456-789",
       },
-      eduInfo: [],
+      eduInfo: [
+        {
+          id: uniqid(),
+          schoolName: "",
+          studSubject: "",
+          studyYear: "",
+        },
+      ],
       experienceInfo: [],
     };
+
+    this.addEduForm = this.addEduForm.bind(this);
   }
 
   render() {
-    const { generalInfo } = this.state;
+    const { generalInfo, eduInfo, experienceInfo } = this.state;
 
-    const onChangeGeneral = (id,value) => {
-      generalInfo[id]=value;
+    const onChangeGeneral = (id, value) => {
+      generalInfo[id] = value;
       this.setState({
-        generalInfo:generalInfo
-        },
-      );
+        generalInfo: generalInfo,
+      });
     };
 
     return (
@@ -41,25 +50,55 @@ export default class App extends Component {
           </div>
           <div className="educationSection formSection">
             <h2>Education</h2>
-            <EducationForm />
+            {this.DisplayEduForms(eduInfo)}
           </div>
           <div className="experienceSection formSection">
             <h2>Experience</h2>
             <ExperienceForm />
           </div>
         </div>
-        <this.PreviewWindow generalInfo={generalInfo}/>
+        <this.PreviewWindow generalInfo={generalInfo} />
       </>
     );
   }
 
-  PreviewWindow({generalInfo}) {
+  addEduForm() {
+    let cloneState = [...this.state.eduInfo];
+    cloneState.push({
+      id: uniqid(),
+      schoolName: "",
+      studSubject: "",
+      studyYear: "",
+    });
+    this.setState({
+      eduInfo: cloneState,
+    });
+  }
+
+  DisplayEduForms(eduInfo) {
+    console.log(eduInfo);
+    return (
+      <>
+        {eduInfo.map((form) => {
+          return (
+            <EducationForm
+              key={form.id}
+              id={form.id}
+              addEduForm={this.addEduForm}
+            />
+          );
+        })}
+      </>
+    );
+  }
+
+  PreviewWindow({ generalInfo }) {
     return (
       <>
         <div className="resumeWindow">
           <div className="generalWindow windowSection">
             <h2>General Information</h2>
-            <GeneralWindow generalInfo={generalInfo}/>
+            <GeneralWindow generalInfo={generalInfo} />
           </div>
           <div className="educationWindow windowSection">
             <h2>Education</h2>
