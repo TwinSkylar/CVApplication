@@ -51,6 +51,9 @@ export default class App extends Component {
           <div className="educationSection formSection">
             <h2>Education</h2>
             {this.DisplayEduForms(eduInfo)}
+            <button type="button" onClick={this.addEduForm}>
+              Add another institution
+            </button>
           </div>
           <div className="experienceSection formSection">
             <h2>Experience</h2>

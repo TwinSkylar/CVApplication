@@ -3,13 +3,6 @@ import "./../styles/form.css";
 const EducationForm = (props) => {
   const formId = props.id;
 
-  function addForm() {
-    console.log("time to add another form");
-    console.log (props);
-    console.log (props.addEduForm)
-
-  }
-
   return (
     <form className="educationForm">
       <label htmlFor="schoolName">Enter a school name:</label>
@@ -27,9 +20,6 @@ const EducationForm = (props) => {
         placeholder="year of study"
       />
       <div className="educationBtns">
-        <button type="button" onClick={props.addEduForm}>
-          Add another institution
-        </button>
         <button type="submit">Update Education</button>
       </div>
     </form>

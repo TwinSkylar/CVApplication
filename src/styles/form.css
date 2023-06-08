@@ -21,3 +21,14 @@
     flex-direction: column;
     gap:20px;
 }
+
+.educationSection{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.educationForm{
+  border:solid 2px black;
+  border-radius: 25px;
+  padding:10px;
+}
