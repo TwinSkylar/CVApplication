@@ -1,5 +1,13 @@
 import "./../styles/form.css";
 
+
+ /*
+ Purpose:  Creates a form  to input education information
+ Parameters: 
+   props.id: The id of the form.  Later changed to a data attribute
+   onChange: Callback function to handle changes to any of the inputs
+ */
+
 const EducationForm = (props) => {
   const { id, onChange } = props;
   return (

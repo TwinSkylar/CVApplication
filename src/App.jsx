@@ -136,10 +136,8 @@ export default class App extends Component {
   };
 
   /*
-  Purpose:  Adds a task to the job experience
-  Parameters: 
-    task: a description of a job function
-    formid: the id of the form to add the task
+  Purpose:  Adds a new form object to the state with default values.
+  Parameters: none
   Return:  none
   */
 
@@ -156,8 +154,18 @@ export default class App extends Component {
     });
   }
 
+  /*
+  Purpose:  Displays the all the experience forms.  It also updates the states whenever
+  changes to the form are made.
+  Parameters: 
+    eduInfo: An array of education forms to display to the preview window
+  Return:  none
+  */
+
   DisplayEduForms(eduInfo) {
     const onChangeEdu = (e) => {
+      /*The id of each education form was stored as part of an attribute.  This is
+      later changed to give pass it in as a data attribute*/
       const parsedInfo = e.target.id.split("_");
       let cloneEdu = this.state.eduInfo.find(
         (element) => element.id === parsedInfo[1]
@@ -182,13 +190,21 @@ export default class App extends Component {
     );
   }
 
-  getForm = (formId) => {
-    let formClone = this.state.experienceInfo.find(
-      (form) => formId === form.id
-    );
-  };
+  /*
+  Purpose:  Displays the all the experience forms.  It also updates the states whenever
+  changes to the form are made.
+  Parameters: 
+    eduInfo: An array of education forms to display to the preview window
+  Return:  none
+  */
 
   DisplayExpForms(expInfo) {
+    /*
+    Purpose:  Updates the state for the experience object on every key press.
+    Parameters: 
+      e: The even from a buttonclick
+    Return:  none
+    */
     const onChangeExp = (e) => {
       let cloneTasks = this.state.experienceInfo.find(
         (form) => form.id === e.target.dataset.id
@@ -204,6 +220,12 @@ export default class App extends Component {
       });
     };
 
+    /*
+    Purpose:  Deletes a task that is associated with the button
+    Parameters: 
+      e: The even from a buttonclick.  Provides the form id and task id through data attributes
+    Return:  none
+    */
     const deleteTask = (e) => {
       let cloneForm = this.state.experienceInfo.find(
         (form) => form.id === e.target.dataset.formid
@@ -220,15 +242,7 @@ export default class App extends Component {
       this.setState({
         experienceInfo: cloneExpInfo,
       });
-
-      const hero = [
-        { id: 1, name: "hero1" },
-        { id: 2, name: "hero2" },
-      ];
-      //remove hero1
-      const updatedHero = hero.filter((item) => item.id !== 1);
     };
-
     return (
       <>
         {expInfo.map((form) => {

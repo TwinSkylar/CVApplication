@@ -1,6 +1,16 @@
 import "./../styles/form.css";
 import { useState } from "react";
-import uniqid from "uniqid";
+
+ /*
+ Purpose:  Creates a form  to input experience information
+ Parameters: 
+   props.addTask: Callback function to add tasks to a particular form
+   props.formId: The form id that is being manipulated
+   props.tasks: An array of tasks that belong to this form
+   props.onChange: Callback function to handle changes to the input
+   props.deleteTask: Callback function to delete tasks from the form
+ */
+
 const ExperienceForm = (props) => {
   const { addTask, formId, tasks, onChange, deleteTask } = props;
   const [task, setTask] = useState("");

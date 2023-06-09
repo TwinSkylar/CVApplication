@@ -1,5 +1,11 @@
 import "./../styles/window.css";
 
+ /*
+ Purpose:  renders the education information
+ Parameters: 
+   eduInfo: An array of education objects.
+ Return:  none
+ */
 const EducationWindow = ({eduInfo}) => {
   return (
     <>

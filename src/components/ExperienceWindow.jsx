@@ -1,7 +1,20 @@
 import "./../styles/window.css";
 import uniqid from "uniqid";
 
+ /*
+ Purpose:  Display a preview of the resume
+ Parameters: 
+  experienceInfo:  An array of experience objects
+ */
+
 const ExperienceWindow = ({ experienceInfo }) => {
+
+
+ /*
+ Purpose:  Displays an array of tasks
+ Parameters: 
+  form:  An array of task objects
+ */
 
   const DisplayTasks = (form) => {
     return (
