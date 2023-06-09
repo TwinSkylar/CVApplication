@@ -9,7 +9,7 @@ const ExperienceWindow = ({ experienceInfo }) => {
         {form.tasks.map((tasks) => {
           return (
             <li className="task" key={uniqid()}>
-              {tasks}
+              {tasks.task}
             </li>
           );
         })}

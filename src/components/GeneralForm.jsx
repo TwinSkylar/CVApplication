@@ -38,7 +38,6 @@ const GeneralForm = ({ onChangeGeneral }) => {
           type="tel"
           placeholder="phone number"
         />
-        <button type="submit">Update Information</button>
       </form>
     </>
   );
