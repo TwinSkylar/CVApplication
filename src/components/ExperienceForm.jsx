@@ -1,9 +1,19 @@
 import "./../styles/form.css";
+import { useState } from "react";
 import uniqid from "uniqid";
 const ExperienceForm = (props) => {
   
-  const {addExpForm} = props;
+  const {addTask,formId} = props;
+  const [task, setTask] = useState('');
+
+  const handleClick = () => {
+    addTask(task,formId);
+  };
   
+  const handleChange = (event) => {
+    setTask(event.target.value);
+  };
+
   return (
     <>
       <form className="experienceForm">
@@ -17,18 +27,12 @@ const ExperienceForm = (props) => {
         <input id="endDate" type="text" placeholder="endDate" />
         <label htmlFor="addTask">Main tasks:</label>
         <div className="addingTasks">
-          <input id="addTask" type="text" placeholder="Type your task here" />
-          <button type="button">Add more tasks</button>
+          <input id="addTask" type="text" name="addTask" onChange={handleChange} placeholder="Type your task here" />
+          <button htmlFor="addTask" type="button" onClick={handleClick}>Add more tasks</button>
         </div>
-        <JobTask />
-
       </form>
     </>
   );
-};
-
-const JobTask = () => {
-  return <li key={uniqid}>Task1 <button type='button'>delete</button></li>;
 };
 
 export default ExperienceForm;

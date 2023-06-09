@@ -81,7 +81,7 @@ export default class App extends Component {
   }
 
   addExpForm() {
-    let cloneState = [ ...this.state.experienceInfo ];
+    let cloneState = [...this.state.experienceInfo];
     cloneState.push({
       id: uniqid(),
       companyName: "Enter company name",
@@ -94,6 +94,20 @@ export default class App extends Component {
       experienceInfo: cloneState,
     });
   }
+
+  addTask = (task, formId) => {
+    let cloneTask = this.state.experienceInfo.find(
+      (expForm) => expForm.id === formId
+    );
+    cloneTask.tasks.push(task);
+
+    let cloneExpList = [...this.state.experienceInfo];
+    let index = cloneExpList.findIndex((elem) => elem.id === formId);
+    cloneExpList[index] = cloneTask;
+    this.setState({
+      experienceInfo: cloneExpList,
+    });
+  };
 
   addEduForm() {
     let cloneState = [...this.state.eduInfo];
@@ -116,7 +130,7 @@ export default class App extends Component {
       );
       cloneEdu[parsedInfo[0]] = e.target.value;
       let cloneEduInfo = [...this.state.eduInfo];
-      var index = cloneEduInfo.findIndex((elem) => elem.id == parsedInfo[1]);
+      let index = cloneEduInfo.findIndex((elem) => elem.id === parsedInfo[1]);
       cloneEduInfo[index] = cloneEdu;
       this.setState({
         eduInfo: cloneEduInfo,
@@ -138,7 +152,14 @@ export default class App extends Component {
     return (
       <>
         {expInfo.map((form) => {
-          return <ExperienceForm key={form.id} id={form.id} />;
+          return (
+            <ExperienceForm
+              key={form.id}
+              formId={form.id}
+              experienceInfo={expInfo}
+              addTask={this.addTask}
+            />
+          );
         })}
       </>
     );
