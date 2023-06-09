@@ -5,7 +5,9 @@ import EducationForm from "./components/EducationForm";
 import ExperienceForm from "./components/ExperienceForm";
 import GeneralWindow from "./components/GeneralWindow";
 import EduWindow from "./components/EducationWindow";
+import ExpWindow from "./components/ExperienceWindow";
 import uniqid from "uniqid";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -55,7 +57,7 @@ export default class App extends Component {
 
     return (
       <>
-        <div className="resumeForm">
+        <div className="resumeForm">eduInfo
           <div className="generalSection formSection">
             <h2>General Information</h2>
             <GeneralForm onChangeGeneral={onChangeGeneral} />
@@ -85,7 +87,7 @@ export default class App extends Component {
     cloneState.push({
       id: uniqid(),
       companyName: "Enter company name",
-      jobTitle: "Enter job title",
+      jobTitle: "Enter job title", 
       startDate: "Enter start date",
       endDate: "Enter end date",
       tasks: [],
@@ -158,6 +160,7 @@ export default class App extends Component {
               formId={form.id}
               experienceInfo={expInfo}
               addTask={this.addTask}
+              tasks={form.tasks}
             />
           );
         })}
@@ -167,6 +170,7 @@ export default class App extends Component {
 
   PreviewWindow() {
     const { generalInfo, eduInfo, experienceInfo } = this.state;
+    console.log ('from app: ' +{experienceInfo});
     return (
       <>
         <div className="resumeWindow">
@@ -179,6 +183,7 @@ export default class App extends Component {
           </div>
           <div className="experienceWindow windowSection">
             <h2>Experience</h2>
+            <ExpWindow experienceInfo={experienceInfo} />
           </div>
         </div>
       </>

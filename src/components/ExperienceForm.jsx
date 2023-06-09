@@ -2,16 +2,29 @@ import "./../styles/form.css";
 import { useState } from "react";
 import uniqid from "uniqid";
 const ExperienceForm = (props) => {
-  
-  const {addTask,formId} = props;
-  const [task, setTask] = useState('');
+  const { addTask, formId, tasks } = props;
+  const [task, setTask] = useState("");
 
   const handleClick = () => {
-    addTask(task,formId);
+    addTask(task, formId);
   };
-  
+
   const handleChange = (event) => {
     setTask(event.target.value);
+  };
+
+  const DisplayTasks = () => {
+    return (
+      <>
+        {tasks.map((tasks) => {
+          return (
+            <li className="formTask" key={uniqid()}>
+              {tasks}
+            </li>
+          );
+        })}
+      </>
+    );
   };
 
   return (
@@ -25,10 +38,22 @@ const ExperienceForm = (props) => {
         <input id="startDate" type="text" placeholder="startDate" />
         <label htmlFor="endDate">Enter end year:</label>
         <input id="endDate" type="text" placeholder="endDate" />
+        <div className="formTaskList">
+          <p>List of Tasks:</p>
+          <ul>{DisplayTasks()}</ul>
+        </div>
         <label htmlFor="addTask">Main tasks:</label>
         <div className="addingTasks">
-          <input id="addTask" type="text" name="addTask" onChange={handleChange} placeholder="Type your task here" />
-          <button htmlFor="addTask" type="button" onClick={handleClick}>Add more tasks</button>
+          <input
+            id="addTask"
+            type="text"
+            name="addTask"
+            onChange={handleChange}
+            placeholder="Type your task here"
+          />
+          <button htmlFor="addTask" type="button" onClick={handleClick}>
+            Add more tasks
+          </button>
         </div>
       </form>
     </>

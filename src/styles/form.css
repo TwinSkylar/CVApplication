@@ -5,10 +5,10 @@
   flex-direction: column;
 }
 
-.formSection{
-    border: 2px solid black;
-    padding:15px;
-    border-radius: 25px;
+.formSection {
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 25px;
 }
 
 .addingTasks {
@@ -16,20 +16,22 @@
   grid-template-columns: auto 20%;
 }
 
-.resume{
-    display:flex;
-    flex-direction: column;
-    gap:20px;
+.resume {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.educationSection, .experienceSection{
-  display:flex;
+.educationSection,
+.experienceSection {
+  display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 }
-.educationForm, .experienceForm{
-  border:solid 2px black;
+.educationForm,
+.experienceForm {
+  border: solid 2px black;
   border-radius: 25px;
-  padding:10px;
+  padding: 10px;
 }
 

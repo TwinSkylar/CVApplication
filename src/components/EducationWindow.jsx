@@ -1,6 +1,6 @@
 import "./../styles/window.css";
 
-const ExperienceWindow = ({ eduInfo }) => {
+const EducationWindow = ({eduInfo}) => {
   return (
     <>
       {eduInfo.map((form) => {
@@ -16,4 +16,4 @@ const ExperienceWindow = ({ eduInfo }) => {
   );
 };
 
-export default ExperienceWindow;
+export default EducationWindow;
