@@ -2,7 +2,7 @@ import "./../styles/form.css";
 import { useState } from "react";
 import uniqid from "uniqid";
 const ExperienceForm = (props) => {
-  const { addTask, formId, tasks } = props;
+  const { addTask, formId, tasks, onChange } = props;
   const [task, setTask] = useState("");
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ const ExperienceForm = (props) => {
         {tasks.map((tasks) => {
           return (
             <li className="formTask" key={uniqid()}>
-              {tasks}
+              {tasks} <button>Delete</button>
             </li>
           );
         })}
@@ -31,13 +31,40 @@ const ExperienceForm = (props) => {
     <>
       <form className="experienceForm">
         <label htmlFor="companyName">Enter company name:</label>
-        <input id="companyName" type="text" placeholder="first name" />
+        <input
+          id="companyName"
+          type="text"
+          placeholder="first name"
+          onChange={onChange}
+          data-id ={formId}
+        />
         <label htmlFor="jobTitle">Enter the job title:</label>
-        <input id="jobTitle" type="text" placeholder="last name" />
+        <input
+          id="jobTitle"
+          type="text"
+          placeholder="last name"
+          onChange={onChange}
+          data-id ={formId}
+
+        />
         <label htmlFor="startDate">Enter start year:</label>
-        <input id="startDate" type="text" placeholder="startDate" />
+        <input
+          id="startDate"
+          type="text"
+          placeholder="startDate"
+          onChange={onChange}
+          data-id ={formId}
+
+        />
         <label htmlFor="endDate">Enter end year:</label>
-        <input id="endDate" type="text" placeholder="endDate" />
+        <input
+          id="endDate"
+          type="text"
+          placeholder="endDate"
+          onChange={onChange}
+          data-id ={formId}
+
+        />
         <div className="formTaskList">
           <p>List of Tasks:</p>
           <ul>{DisplayTasks()}</ul>

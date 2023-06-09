@@ -57,7 +57,7 @@ export default class App extends Component {
 
     return (
       <>
-        <div className="resumeForm">eduInfo
+        <div className="resumeForm">
           <div className="generalSection formSection">
             <h2>General Information</h2>
             <GeneralForm onChangeGeneral={onChangeGeneral} />
@@ -151,6 +151,16 @@ export default class App extends Component {
   }
 
   DisplayExpForms(expInfo) {
+    const onChangeExp = (e)=>{
+      let cloneTasks = this.state.experienceInfo.find((form)=>form.id===e.target.dataset.id);
+      cloneTasks[e.target.id] = e.target.value;
+      let cloneExpInfo = [...this.state.experienceInfo];
+      let index = cloneExpInfo.findIndex((elem) => elem.id === e.target.dataset.id);
+      cloneExpInfo[index] = cloneTasks;
+      this.setState({
+        experienceInfo: cloneExpInfo,
+      });
+    };
     return (
       <>
         {expInfo.map((form) => {
@@ -161,6 +171,7 @@ export default class App extends Component {
               experienceInfo={expInfo}
               addTask={this.addTask}
               tasks={form.tasks}
+              onChange={onChangeExp}
             />
           );
         })}
@@ -170,7 +181,6 @@ export default class App extends Component {
 
   PreviewWindow() {
     const { generalInfo, eduInfo, experienceInfo } = this.state;
-    console.log ('from app: ' +{experienceInfo});
     return (
       <>
         <div className="resumeWindow">
