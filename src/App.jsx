@@ -26,10 +26,21 @@ export default class App extends Component {
           studyYear: "Year of Study",
         },
       ],
-      experienceInfo: [],
+      experienceInfo: [
+        {
+          id: uniqid(),
+          companyName: "Enter company name",
+          jobTitle: "Enter job title",
+          startDate: "Enter start date",
+          endDate: "Enter end date",
+          tasks: [],
+        },
+      ],
     };
 
     this.PreviewWindow = this.PreviewWindow.bind(this);
+    this.addEduForm = this.addEduForm.bind(this);
+    this.addExpForm = this.addExpForm.bind(this);
   }
 
   render() {
@@ -58,7 +69,10 @@ export default class App extends Component {
           </div>
           <div className="experienceSection formSection">
             <h2>Experience</h2>
-            <ExperienceForm />
+            {this.DisplayExpForms(experienceInfo)}
+            <button type="button" onClick={this.addExpForm}>
+              Add more experience
+            </button>
           </div>
         </div>
         <this.PreviewWindow />
@@ -66,13 +80,28 @@ export default class App extends Component {
     );
   }
 
+  addExpForm() {
+    let cloneState = [ ...this.state.experienceInfo ];
+    cloneState.push({
+      id: uniqid(),
+      companyName: "Enter company name",
+      jobTitle: "Enter job title",
+      startDate: "Enter start date",
+      endDate: "Enter end date",
+      tasks: [],
+    });
+    this.setState({
+      experienceInfo: cloneState,
+    });
+  }
+
   addEduForm() {
     let cloneState = [...this.state.eduInfo];
     cloneState.push({
       id: uniqid(),
-      schoolName: "Education Institution",
-      studSubject: "Area of study",
-      studyYear: "2023",
+      schoolName: "School Name",
+      studySubject: "Area of Study",
+      studyYear: "Year of Study",
     });
     this.setState({
       eduInfo: cloneState,
@@ -81,32 +110,35 @@ export default class App extends Component {
 
   DisplayEduForms(eduInfo) {
     const onChangeEdu = (e) => {
-      const parsedInfo = e.target.id.split('_');
-      let cloneEdu = this.state.eduInfo.find(element=>element.id === parsedInfo[1]);
+      const parsedInfo = e.target.id.split("_");
+      let cloneEdu = this.state.eduInfo.find(
+        (element) => element.id === parsedInfo[1]
+      );
       cloneEdu[parsedInfo[0]] = e.target.value;
       let cloneEduInfo = [...this.state.eduInfo];
-      var index = cloneEduInfo.findIndex(elem => elem.id == parsedInfo[1]);
+      var index = cloneEduInfo.findIndex((elem) => elem.id == parsedInfo[1]);
       cloneEduInfo[index] = cloneEdu;
       this.setState({
-        eduInfo:cloneEduInfo
+        eduInfo: cloneEduInfo,
       });
-
-      //find out which form
-      //set the values of each form
-      //change the form that is changing
     };
-
 
     return (
       <>
         {eduInfo.map((form) => {
           return (
-            <EducationForm
-              key={form.id}
-              id={form.id}
-              onChange={onChangeEdu}
-            />
+            <EducationForm key={form.id} id={form.id} onChange={onChangeEdu} />
           );
+        })}
+      </>
+    );
+  }
+
+  DisplayExpForms(expInfo) {
+    return (
+      <>
+        {expInfo.map((form) => {
+          return <ExperienceForm key={form.id} id={form.id} />;
         })}
       </>
     );
@@ -118,12 +150,11 @@ export default class App extends Component {
       <>
         <div className="resumeWindow">
           <div className="generalWindow windowSection">
-            <h2>General Information</h2>
             <GeneralWindow generalInfo={generalInfo} />
           </div>
           <div className="educationWindow windowSection">
             <h2>Education</h2>
-            <EduWindow eduInfo={eduInfo}/>
+            <EduWindow eduInfo={eduInfo} />
           </div>
           <div className="experienceWindow windowSection">
             <h2>Experience</h2>

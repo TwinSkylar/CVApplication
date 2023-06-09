@@ -22,13 +22,14 @@
     gap:20px;
 }
 
-.educationSection{
+.educationSection, .experienceSection{
   display:flex;
   flex-direction: column;
   gap:10px;
 }
-.educationForm{
+.educationForm, .experienceForm{
   border:solid 2px black;
   border-radius: 25px;
   padding:10px;
 }
+

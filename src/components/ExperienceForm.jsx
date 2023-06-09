@@ -1,6 +1,8 @@
 import "./../styles/form.css";
 import uniqid from "uniqid";
-const ExperienceForm = () => {
+const ExperienceForm = (props) => {
+  
+  const {addExpForm} = props;
   
   return (
     <>
@@ -19,11 +21,7 @@ const ExperienceForm = () => {
           <button type="button">Add more tasks</button>
         </div>
         <JobTask />
-        <JobTask />
-        <div className="experienceBtns">
-          <button type="button">Add more experience</button>
-          <button type="submit">Update Experience</button>
-        </div>
+
       </form>
     </>
   );

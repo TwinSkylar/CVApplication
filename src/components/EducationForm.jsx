@@ -25,9 +25,6 @@ const EducationForm = (props) => {
         placeholder="year of study"
         onChange={onChange}
       />
-      <div className="educationBtns">
-        <button type="submit">Update Education</button>
-      </div>
     </form>
   );
 };

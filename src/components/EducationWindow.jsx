@@ -5,11 +5,10 @@ const ExperienceWindow = ({ eduInfo }) => {
     <>
       {eduInfo.map((form) => {
         return (
-          <div key={form.id}>
+          <div className="educationPreview"key={form.id}>
             <div className='schoolName'>{form.schoolName}</div>
             <div className='studySubject'>{form.studySubject}</div>
             <div className='studyYear'>{form.studyYear}</div>
-            <h2>hello World</h2>
           </div>
         );
       })}
